@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Examen_1.Models.Paquete>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<br />
+
+
+<div class="card border-info mb-3" style="max-width: 100rem;">
+    <div class="card-header"><h3 style="text-align:center">Paquetes de piscinas disponibles</h3></div>
+    <div class="card-body">
+
+        @*<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a asp-action="Create" class="btn btn-info  me-2">Registrar un cliente nuevo</a>
+            </div>
+            <br />*@
+
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PrecioVisita)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PrecioVisita)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Edit", new { /*id = item.Cedula */}) |
+                                    @Html.ActionLink("Proyectos cotizados", "Index", "Proyecto", new {/* id = item.Cedula */})
+                                </td>
+                            </tr>
+}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
