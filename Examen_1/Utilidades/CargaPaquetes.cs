@@ -1,6 +1,7 @@
 ﻿using Examen_1.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,10 +20,11 @@ namespace Examen_1.Utilidades
             try
             {
                 #region Piscina de agua dulce paquete semanal
+
                 ListaCaracteristicasPaquete = new List<CaracteristicasPaquete>();
                 ListaPaqueteExtra = new List<ExtraPaquete>();
 
-                Paquete = new Paquete { Id = 1, Nombre = "Piscina de agua dulce paquete semanal", PrecioVisita = 30000, Codigo = "Pool01" };
+                Paquete = new Paquete { Id = 1, Nombre = "Piscina de agua dulce paquete semanal", PrecioVisita = 30000, Codigo = "Pool01", Imagen = File.ReadAllBytes(@"Views/Img/Pool01.jpg") };
 
                 #region Caracteristicas 
                 caracteristicas = new CaracteristicasPaquete { Id = 1, Descripcion = "Análisis químico de agua de piscina una vez por semana" };
@@ -64,7 +66,14 @@ namespace Examen_1.Utilidades
                 ListaCaracteristicasPaquete = new List<CaracteristicasPaquete>();
                 ListaPaqueteExtra = new List<ExtraPaquete>();
 
-                Paquete = new Paquete { Id = 2, Nombre = "Piscina de agua salada paquete mensual", PrecioVisita = 20000, Codigo = "Pool02" };
+                Paquete = new Paquete
+                {
+                    Id = 2,
+                    Nombre = "Piscina de agua salada paquete mensual",
+                    PrecioVisita = 20000,
+                    Codigo = "Pool02",
+                    Imagen = File.ReadAllBytes(@"Views/Img/Pool02.jpg")
+                };
 
                 #region Caracteristicas 
                 caracteristicas = new CaracteristicasPaquete { Id = 1, Descripcion = "Análisis químico de agua de piscina una vez por mes" };
@@ -106,7 +115,7 @@ namespace Examen_1.Utilidades
                 ListaCaracteristicasPaquete = new List<CaracteristicasPaquete>();
                 ListaPaqueteExtra = new List<ExtraPaquete>();
 
-                Paquete = new Paquete { Id = 3, Nombre = "Piscina de agua dulce visita extra", PrecioVisita = 10000, Codigo = "Pool03" };
+                Paquete = new Paquete { Id = 3, Nombre = "Piscina de agua dulce visita extra", PrecioVisita = 10000, Codigo = "Pool03", Imagen = File.ReadAllBytes(@"Views/Img/Pool03.jpg") };
 
                 #region Caracteristicas 
                 caracteristicas = new CaracteristicasPaquete { Id = 1, Descripcion = "Análisis químico de agua de piscina una vez por mes" };
@@ -130,7 +139,7 @@ namespace Examen_1.Utilidades
                 ListaCaracteristicasPaquete = new List<CaracteristicasPaquete>();
                 ListaPaqueteExtra = new List<ExtraPaquete>();
 
-                Paquete = new Paquete { Id = 4, Nombre = "Piscina de agua salada visita extra", PrecioVisita = 15000, Codigo = "Pool04" };
+                Paquete = new Paquete { Id = 4, Nombre = "Piscina de agua salada visita extra", PrecioVisita = 15000, Codigo = "Pool04", Imagen = File.ReadAllBytes(@"Views/Img/Pool04.jpg") };
 
                 #region Caracteristicas 
                 caracteristicas = new CaracteristicasPaquete { Id = 1, Descripcion = "Análisis químico de agua de piscina una vez por mes" };

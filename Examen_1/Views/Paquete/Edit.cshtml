@@ -1,0 +1,77 @@
+﻿@model Examen_1.Models.Cliente
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+
+<div class="card border-info mb-3" style="max-width: 100rem;">
+    <div class="card-header"><h3 style="text-align:center">Facturar cliente</h3></div>
+    <div class="card-body">
+        <form asp-action="Edit">
+
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label asp-for="NombreCompleto" class="control-label"></label>
+                        <input asp-for="NombreCompleto" class="form-control" />
+                        <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label asp-for="Cantidad" class="control-label"></label>
+                        <input asp-for="Cantidad" class="form-control" />
+                        <span asp-validation-for="Cantidad" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label asp-for="MontoSubtotal" class="control-label"></label>
+                        <input asp-for="MontoSubtotal" class="form-control" />
+                        <span asp-validation-for="MontoSubtotal" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label asp-for="MontoDescuento" class="control-label"></label>
+                        <input asp-for="MontoDescuento" class="form-control" />
+                        <span asp-validation-for="MontoDescuento" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label asp-for="MontoImpuesto" class="control-label"></label>
+                        <input asp-for="MontoImpuesto" class="form-control" />
+                        <span asp-validation-for="MontoImpuesto" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label asp-for="MontoTotal" class="control-label"></label>
+                        <input asp-for="MontoTotal" class="form-control" />
+                        <span asp-validation-for="MontoTotal" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-info mr-1" asp-action="Index">Regresar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

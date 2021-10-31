@@ -7,6 +7,12 @@
 
 <br />
 
+<div class="btn-group d-lg-flex justify-content-lg-center" role="group">
+    <a type="button" class="btn btn-info active" asp-area="" asp-controller="Paquete" asp-action="Index">Paso 1</a>
+    <a type="button" class="btn btn-info" asp-area="" asp-controller="Paquete" asp-action="Index">Paso 2</a>
+    <a type="button" class="btn btn-info" asp-area="" asp-controller="Paquete" asp-action="Index">Paso 3</a>
+</div>
+<br />
 
 <div class="card border-info mb-3" style="max-width: 100rem;">
     <div class="card-header"><h3 style="text-align:center">Paquetes de piscinas disponibles</h3></div>
@@ -19,11 +25,11 @@
 
         <div class="row">
             <div class="col-sm-12 text-center">
-                <table class="table">
+                <table class="table" id="Padre">
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.Id)
+                                @Html.DisplayNameFor(model => model.Codigo)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Nombre)
@@ -31,28 +37,75 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.PrecioVisita)
                             </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Imagen)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ListaCaracteristicas)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ListaPaqueteExtras)
+                            </th>
+                            <th>
+                                Cantidad de paquetes
+                            </th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Nombre)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PrecioVisita)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Editar", "Edit", new { /*id = item.Cedula */}) |
-                                    @Html.ActionLink("Proyectos cotizados", "Index", "Proyecto", new {/* id = item.Cedula */})
-                                </td>
-                            </tr>
-}
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Codigo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrecioVisita)
+                            </td>
+                            <td>
+                                @{
+                                    var base64 = Convert.ToBase64String(item.Imagen);
+                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                }
+
+                                <img src="@imgSrc" width="200" height="100" />
+
+                            </td>
+                            <td>
+                                <ol class="list-group list-group-numbered">
+                                    <li class="list-group-item">
+                                        @foreach (var item2 in item.ListaCaracteristicas)
+                                        {
+                                            <div>
+                                                @item2.Descripcion
+                                                <hr />
+                                            </div>
+                                        }
+                                    </li>
+                                </ol>
+                            </td>
+                            <td>
+                                <select class="form-select">
+                                    <option selected>Seleccione un paquete extra</option>
+                                    @foreach (var item2 in item.ListaPaqueteExtras)
+                                    {
+                                        <option value="@item2.Id">
+                                            @item2.Descripcion / Precio: @item2.Precio
+                                        </option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" name="CantidadPaq" class="form-control" placeholder="" />
+                            </td>
+                            <td>
+                                @Html.ActionLink("Facturar", "Edit", new {/* id = item.Cedula */})
+                            </td>
+                        </tr>
+                        }
                     </tbody>
                 </table>
             </div>
